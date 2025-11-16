@@ -3,7 +3,7 @@ name: Build Repo
 on:
   push:
     paths:
-      - "deb/*.deb"
+      - "deb/**"     # <-- triggers on add / edit / delete
 
 jobs:
   build:
@@ -18,7 +18,11 @@ jobs:
 
     - name: Generate Packages file
       run: |
-        dpkg-scanpackages deb /dev/null > Packages
+        if [ -d "deb" ]; then
+          dpkg-scanpackages deb /dev/null > Packages || true
+        else
+          echo "" > Packages
+        fi
 
     - name: Compress Packages.gz
       run: gzip -c Packages > Packages.gz
