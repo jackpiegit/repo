@@ -1,10 +1,14 @@
 Package: jbpatcher-frida-gui-cli-bundle
-Name: jbpatcher-frida-gui-cli-bundle
 Version: 1.0.0
 Architecture: iphoneos-arm64
 Maintainer: exocore
-Description: IPA patcher with iOS 26 spoof, jailbreak unhook, error downgrader.
-Depends: fricon, coreutils, ldid
+Filename: deb/jbpatcher-frida-gui-cli-bundle_1.0.0_iphoneos-arm64.deb
+Size: 165868
+MD5sum: 95c5f36eb67fb3dd62cda9da112a077d
+SHA1: 4a2bee3ed88653bee1c9a318210cf725cf39de1f
+SHA256: 64f03fba16346ea7966b97944779f63b987bf49fa4820e2355bbd34dd1e0daa3
 Section: utils
 Priority: optional
+Description: IPA patcher with iOS 26 spoof, jailbreak unhook, error downgrader.
+Name: jbpatcher-frida-gui-cli-bundle
 
