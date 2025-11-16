@@ -1,0 +1,32 @@
+name: Build Repo
+
+on:
+  push:
+    paths:
+      - "deb/*.deb"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v3
+
+    - name: Install dpkg tools
+      run: sudo apt-get update && sudo apt-get install -y dpkg-dev
+
+    - name: Generate Packages file
+      run: |
+        dpkg-scanpackages deb /dev/null > Packages
+
+    - name: Compress Packages.gz
+      run: gzip -c Packages > Packages.gz
+
+    - name: Commit and push changes
+      run: |
+        git config user.name "github-actions"
+        git config user.email "github-actions@github.com"
+        git add Packages Packages.gz
+        git commit -m "Auto-update repo index" || echo "No changes to commit"
+        git push
